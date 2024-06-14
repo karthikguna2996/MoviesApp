@@ -1,0 +1,13 @@
+.movieCard {
+  width: 254px;
+  height: 170px;
+  top: 708px;
+  left: 166px;
+  gap: 0px;
+  border-radius: 8px 0px 0px 0px;
+  opacity: 0px;
+}
+
+li {
+  list-style-type: None;
+}

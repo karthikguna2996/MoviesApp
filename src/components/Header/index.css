@@ -1,0 +1,25 @@
+.headerDisplay {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.inputProfile {
+  margin-left: auto;
+}
+.text {
+  margin: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.profileProps {
+  width: 40px;
+  height: 40px;
+  border-radius: 1000px;
+  margin: 10px;
+}
+
+.search {
+  margin: 10px;
+}
