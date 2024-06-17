@@ -1,0 +1,10 @@
+.popularMovies {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: space-around;
+}
+
+.bgcolor {
+  background-color: rgba(19, 19, 19, 1);
+  height: 100%;
+}

@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Redirect} from 'react-router-dom'
+import {Redirect, withRouter} from 'react-router-dom'
 import './index.css'
 
 class LoginRoute extends Component {
@@ -85,4 +85,4 @@ class LoginRoute extends Component {
   }
 }
 
-export default LoginRoute
+export default withRouter(LoginRoute)

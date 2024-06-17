@@ -1,0 +1,102 @@
+.title {
+  font-family: HK Grotesk;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 62.54px;
+  text-align: left;
+  margin-left: 10px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.isAdult {
+  width: Hug (55px) px;
+  height: Hug (27px) px;
+  top: 258px;
+  left: 245.5px;
+  padding: 6px 12px 6px 12px;
+  text-align: center;
+  gap: 10px;
+  border-radius: 2px;
+  border: solid 2px;
+
+  opacity: 3px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.runTime {
+  font-family: HK Grotesk;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 23.45px;
+  text-align: left;
+  color: rgba(255, 255, 255, 1);
+}
+
+.date {
+  font-family: HK Grotesk;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 23.45px;
+  text-align: left;
+  color: rgba(255, 255, 255, 1);
+}
+
+.infoCont {
+  display: flex;
+  width: 30vw;
+  justify-content: space-around;
+}
+
+.overview {
+  font-family: HK Grotesk;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  text-align: left;
+  margin-left: 10px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.play {
+  width: 80px;
+  height: 50px;
+  margin: 10px;
+  gap: 0px;
+  border-radius: 5px;
+  opacity: 0px;
+}
+
+.genresHeading {
+  font-family: HK Grotesk;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  text-align: left;
+  color: rgba(148, 163, 184, 1);
+}
+
+li {
+  list-style-type: none;
+  color: rgba(255, 255, 255, 1);
+}
+
+.bgc {
+  background-color: rgba(19, 19, 19, 1);
+  height: 100%;
+}
+
+.color {
+  color: rgba(255, 255, 255, 1);
+}
+
+.flexing {
+  display: flex;
+  justify-content: space-around;
+}
+
+.commponentWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

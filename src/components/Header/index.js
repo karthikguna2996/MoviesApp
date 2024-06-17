@@ -15,6 +15,7 @@ const Header = () => (
     <div className="inputProfile">
       <Link to="/search" className="text">
         <FaSearch className="search" />
+        <input />
       </Link>
       <Link to="/profile" className="text">
         <img

@@ -12,6 +12,8 @@ import Profile from './components/Profile'
 
 import Search from './components/Search'
 
+import MovieDetails from './components/MovieDetails'
+
 import './App.css'
 
 const App = () => (
@@ -21,6 +23,7 @@ const App = () => (
     <ProtectedRoute exact path="/popular" component={Popular} />
     <ProtectedRoute exact path="/profile" component={Profile} />
     <ProtectedRoute exact path="/search" component={Search} />
+    <ProtectedRoute exact path="/movies/:id" component={MovieDetails} />
   </Switch>
 )
 

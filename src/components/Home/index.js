@@ -177,8 +177,9 @@ class Home extends Component {
 
   render() {
     const {apiStatusOriginal, apiStatusTrending} = this.state
-    let a = this.renderViewOriginal()
+    let a
     let b
+    let c
     switch (apiStatusOriginal) {
       case apiStatusConstants.success:
         a = this.renderViewOriginal()
@@ -191,6 +192,19 @@ class Home extends Component {
         break
       default:
         a = null
+    }
+    switch (apiStatusOriginal) {
+      case apiStatusConstants.success:
+        c = this.renderRandomView()
+        break
+      case apiStatusConstants.failure:
+        c = this.renderFailureView()
+        break
+      case apiStatusConstants.inProgress:
+        c = this.renderLoader()
+        break
+      default:
+        c = null
     }
 
     switch (apiStatusTrending) {
@@ -210,7 +224,7 @@ class Home extends Component {
     console.log(b)
     return (
       <div className="bg">
-        <div>{this.renderRandomView()}</div>
+        <div>{c}</div>
         <div>
           <h1>Trending Movies</h1>
           <div>{b}</div>
