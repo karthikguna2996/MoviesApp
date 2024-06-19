@@ -96,9 +96,9 @@ class MovieDetails extends Component {
       backdropPath,
       budget,
       genres,
-      id,
+
       overview,
-      posterPath,
+
       releaseDate,
       runtime,
       similarMovies,
@@ -196,6 +196,7 @@ class MovieDetails extends Component {
             </div>
           </div>
         </div>
+        <p className="color">More Like This</p>
         <ul className="commponentWrap">
           {similarMoviesCC.map(eachItem => (
             <MovieItem moviesDetails={eachItem} key={eachItem.id} />

@@ -2,6 +2,8 @@ import {Component} from 'react'
 
 import {Switch} from 'react-router-dom'
 
+import Cookies from 'js-cookie'
+
 import Home from './components/Home'
 
 import LoginRoute from './components/LoginRoute'
@@ -20,23 +22,95 @@ import MovieContext from './Context'
 
 import './App.css'
 
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  inProgress: 'IN_PROGRESS',
+  resultNotFound: 'ResultNotFound',
+}
+
 class App extends Component {
   state = {
     searchInput: '',
+    searchDetails: [],
+    isInputVisible: false,
+    apiStatusSearch: apiStatusConstants.initial,
   }
 
-  onChangeInput(searchText) {
+  getSearchResults = async () => {
+    const {searchInput} = this.state
+
+    this.setState({apiStatusSearch: apiStatusConstants.inProgress})
+    const jwtToken = Cookies.get('jwt_token')
+
+    const options = {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      method: 'GET',
+    }
+    console.log(searchInput)
+    const response = await fetch(
+      `https://apis.ccbp.in/movies-app/movies-search?search=${searchInput}`,
+      options,
+    )
+
+    if (response.ok === true) {
+      const data2 = await response.json()
+      const searchMovies = data2.results
+      const searchedMovies = searchMovies.map(eachItem => ({
+        backdropPath: eachItem.backdrop_path,
+        id: eachItem.id,
+        overview: eachItem.overview,
+        posterPath: eachItem.poster_path,
+        title: eachItem.title,
+      }))
+      if (searchMovies.length === 0) {
+        this.setState({
+          searchDetails: [...searchedMovies],
+          isInputVisible: true,
+          apiStatusSearch: apiStatusConstants.resultNotFound,
+        })
+      } else {
+        this.setState({
+          searchDetails: [...searchedMovies],
+          isInputVisible: true,
+          apiStatusSearch: apiStatusConstants.success,
+        })
+      }
+    } else {
+      this.setState({
+        apiStatusSearch: apiStatusConstants.failure,
+      })
+    }
+  }
+
+  onClickSearch = () => {
+    this.getSearchResults()
+  }
+
+  onChangeInput = searchText => {
     this.setState({searchInput: searchText})
   }
 
   render() {
-    const {searchInput} = this.state
+    const {
+      searchInput,
+      searchDetails,
+      isInputVisible,
+      apiStatusSearch,
+    } = this.state
 
     return (
       <MovieContext.Provider
         value={{
           searchInput,
           onChangeInput: this.onChangeInput,
+          onClickSearch: this.onClickSearch,
+          searchDetails,
+          isInputVisible,
+          apiStatusSearch,
         }}
       >
         <Switch>

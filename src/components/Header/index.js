@@ -9,9 +9,13 @@ import './index.css'
 const Header = () => (
   <MovieContext.Consumer>
     {value => {
-      const {searchInput, onChangeInput} = value
+      const {searchInput, onChangeInput, onClickSearch, isInputVisible} = value
       const onChangeMovie = event => {
         onChangeInput(event.target.value)
+      }
+
+      const onClickSearchMovies = () => {
+        onClickSearch()
       }
 
       return (
@@ -24,10 +28,12 @@ const Header = () => (
           </Link>
           <div className="inputProfile">
             <Link to="/search" className="text">
-              <button type="button">
+              <button type="button" onClick={onClickSearchMovies}>
                 <FaSearch className="search" />
               </button>
-              <input onChange={onChangeMovie} value={searchInput} />
+              {isInputVisible ? (
+                <input onChange={onChangeMovie} value={searchInput} />
+              ) : null}
             </Link>
             <Link to="/profile" className="text">
               <img
