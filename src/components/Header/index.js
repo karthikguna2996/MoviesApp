@@ -19,31 +19,40 @@ const Header = () => (
       }
 
       return (
-        <div className="headerDisplay">
+        <ul className="headerDisplay">
           <Link to="/" className="text">
-            Home
+            <li> Home</li>
           </Link>
+
           <Link to="/popular" className="text">
-            Popular
+            <li>Popular</li>
           </Link>
+
           <div className="inputProfile">
             <Link to="/search" className="text">
               <button type="button" onClick={onClickSearchMovies}>
                 <FaSearch className="search" />
               </button>
               {isInputVisible ? (
-                <input onChange={onChangeMovie} value={searchInput} />
+                <input
+                  onChange={onChangeMovie}
+                  value={searchInput}
+                  type="search"
+                />
               ) : null}
             </Link>
-            <Link to="/profile" className="text">
-              <img
-                src="https://res.cloudinary.com/dr4t2w75n/image/upload/fl_preserve_transparency/v1718282820/Group_esdzqf.jpg?_s=public-apps"
-                className="profileProps"
-                alt="profile"
-              />
+
+            <Link to="/account" className="text">
+              <li>
+                <img
+                  src="https://res.cloudinary.com/dr4t2w75n/image/upload/fl_preserve_transparency/v1718282820/Group_esdzqf.jpg?_s=public-apps"
+                  className="profileProps"
+                  alt="profile"
+                />
+              </li>
             </Link>
           </div>
-        </div>
+        </ul>
       )
     }}
   </MovieContext.Consumer>

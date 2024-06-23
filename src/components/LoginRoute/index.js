@@ -33,6 +33,8 @@ class LoginRoute extends Component {
     if (response.ok === true) {
       const jwtToken = data.jwt_token
       Cookies.set('jwt_token', jwtToken, {expires: 30})
+      Cookies.set('username', username, {expires: 30})
+      Cookies.set('password', password, {expires: 30})
       history.replace('/')
     } else {
       this.setState({err: true})

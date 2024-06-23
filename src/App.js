@@ -117,7 +117,7 @@ class App extends Component {
           <LoginRoute exact path="/login" component={LoginRoute} />
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/popular" component={Popular} />
-          <ProtectedRoute exact path="/profile" component={Profile} />
+          <ProtectedRoute exact path="/account" component={Profile} />
           <ProtectedRoute exact path="/search" component={Search} />
           <ProtectedRoute exact path="/movies/:id" component={MovieDetails} />
         </Switch>

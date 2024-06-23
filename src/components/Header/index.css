@@ -6,6 +6,7 @@
 }
 .inputProfile {
   margin-left: auto;
+  display: flex;
 }
 .text {
   margin: 15px;

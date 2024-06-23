@@ -2,3 +2,33 @@
   width: 40px;
   height: 40px;
 }
+
+.color {
+  background-color: rgba(19, 19, 19, 1);
+}
+
+.bg-color {
+  background-color: white;
+  color: black;
+}
+
+.textColor {
+  font-family: HK Grotesk;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 31.27px;
+  text-align: left;
+  color: rgba(148, 163, 184, 1);
+}
+
+.btn {
+  width: Hug (89px) px;
+  height: Hug (40px) px;
+  top: 508px;
+  left: 675px;
+  padding: 8px 20px 8px 20px;
+  gap: 10px;
+  border-radius: 4px 0px 0px 0px;
+  opacity: 0px;
+  background-color: rgba(229, 9, 20, 1);
+}

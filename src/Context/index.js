@@ -1,7 +1,7 @@
 import React from 'react'
 
 const MovieContext = React.createContext({
-  searchInput: 'hello',
+  searchInput: '',
   onChangeInput: () => {},
   onClickSearch: () => {},
   searchDetails: [],

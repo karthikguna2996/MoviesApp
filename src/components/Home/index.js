@@ -12,6 +12,8 @@ import RandomMovie from '../RandomMovie'
 
 import FailureMovieFetch from '../FailureMovieFetch'
 
+import Icons from '../Icons'
+
 import './index.css'
 
 import 'slick-carousel/slick/slick.css'
@@ -232,6 +234,9 @@ class Home extends Component {
         <div>
           <h1>Original Movies</h1>
           <div>{a}</div>
+        </div>
+        <div>
+          <Icons />
         </div>
       </div>
     )

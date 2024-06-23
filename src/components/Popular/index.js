@@ -8,6 +8,8 @@ import MovieItem from '../MovieItem'
 
 import Header from '../Header'
 
+import Icons from '../Icons'
+
 import './index.css'
 
 const apiStatusConstants = {
@@ -104,6 +106,7 @@ class Popular extends Component {
         <div className="bgcolor">
           <Header />
           {a}
+          <Icons />
         </div>
       </>
     )

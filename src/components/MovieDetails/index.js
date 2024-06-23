@@ -6,6 +6,8 @@ import {getYear, format} from 'date-fns'
 
 import Loader from 'react-loader-spinner'
 
+import Icons from '../Icons'
+
 import Header from '../Header'
 
 import MovieItem from '../MovieItem'
@@ -27,6 +29,18 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     this.getMovieDetails()
+  }
+
+  componentDidUpdate(prevProps) {
+    const {match} = this.props
+    const {params} = match
+    const {id} = params
+
+    // Check if the ID in the URL has changed
+    if (id !== prevProps.match.params.id) {
+      // If the ID has changed, make a new fetch call
+      this.getMovieDetails()
+    }
   }
 
   renderLoader = () => (
@@ -223,6 +237,9 @@ class MovieDetails extends Component {
     return (
       <>
         <div className="bgc">{a}</div>
+        <div>
+          <Icons />
+        </div>
       </>
     )
   }
