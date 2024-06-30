@@ -53,7 +53,7 @@ class LoginRoute extends Component {
         <img
           src="https://res.cloudinary.com/dr4t2w75n/image/upload/fl_preserve_transparency/v1717754517/Group_7399_cjpio6.jpg?_s=public-apps"
           className="moviesImg"
-          alt="Movies"
+          alt="login website logo"
         />
         <form className="formCont">
           <h1 className="h1cl">Login</h1>

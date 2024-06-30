@@ -1,12 +1,12 @@
-const FailureMovieFetch = props => {
-  const {onClickTryAgain} = props
+const RenderFailureViewPopular = props => {
+  const {onClickTryAgainPopular} = props
   const clickTryAgain = () => {
-    onClickTryAgain()
+    onClickTryAgainPopular()
   }
   return (
     <>
       <img
-        src="https://asset.cloudinary.com/dr4t2w75n/eeab1637c57c3ddbb907e56a9ef0402d"
+        src="https://asset.cloudinary.com/dr4t2w75n/59411ae41d618ff9c6feeff0e769ed6a"
         alt="failure view"
       />
       <p>Something went wrong. Please try again</p>
@@ -16,4 +16,4 @@ const FailureMovieFetch = props => {
     </>
   )
 }
-export default FailureMovieFetch
+export default RenderFailureViewPopular

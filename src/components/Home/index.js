@@ -24,7 +24,7 @@ const settings = {
   dots: true,
   infinite: true,
   speed: 500,
-  slidesToShow: 5,
+  slidesToShow: 4,
   slidesToScroll: 3,
   Type: true,
 }
@@ -228,11 +228,11 @@ class Home extends Component {
       <div className="bg">
         <div>{c}</div>
         <div>
-          <h1>Trending Movies</h1>
+          <h1>Trending Now</h1>
           <div>{b}</div>
         </div>
         <div>
-          <h1>Original Movies</h1>
+          <h1>Originals</h1>
           <div>{a}</div>
         </div>
         <div>

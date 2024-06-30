@@ -10,6 +10,8 @@ import Icons from '../Icons'
 
 import Header from '../Header'
 
+import MovieDetailsFailureView from '../MovieDetailsFailureView'
+
 import MovieItem from '../MovieItem'
 
 import './index.css'
@@ -103,6 +105,16 @@ class MovieDetails extends Component {
     }
   }
 
+  onClickTryAgainMovieDetail = () => {
+    this.getMovieDetails()
+  }
+
+  renderFailure = () => (
+    <MovieDetailsFailureView
+      onClickTryAgainMovieDetail={this.onClickTryAgainMovieDetail}
+    />
+  )
+
   renderView = () => {
     const {movieInf} = this.state
     const {
@@ -149,13 +161,13 @@ class MovieDetails extends Component {
               <p className="runTime">
                 {Math.floor(runtime / 60)}h {runtime % 60}m
               </p>
-              <p>
+              <>
                 {adult ? (
-                  <span className="isAdult">A</span>
+                  <p className="isAdult">A</p>
                 ) : (
-                  <span className="isAdult">U/A</span>
+                  <p className="isAdult">U/A</p>
                 )}
-              </p>
+              </>
               <p className="date">{getYear(new Date(releaseDate))}</p>
             </div>
             <p className="overview ">{overview}</p>
@@ -166,7 +178,7 @@ class MovieDetails extends Component {
         </div>
         <div className="flexing">
           <div>
-            <p className="genresHeading">Genres</p>
+            <h1 className="genresHeading">genres</h1>
             <ul>
               {genres.map(eachItem => (
                 <li key={eachItem.id}>{eachItem.name}</li>
@@ -174,33 +186,35 @@ class MovieDetails extends Component {
             </ul>
           </div>
           <div>
-            <p className="genresHeading">Audio Available</p>
+            <h1 className="genresHeading">Audio Available</h1>
             <ul>
               {spokenLanguages.map(eachItem => (
-                <li key={eachItem.id}>{eachItem.english_name}</li>
+                <p className="color" key={eachItem.id}>
+                  {eachItem.english_name}
+                </p>
               ))}
             </ul>
           </div>
 
           <div>
             <div>
-              <p className="genresHeading">Rating Count</p>
+              <h1 className="genresHeading">Rating Count</h1>
               <p className="color">{voteCount}</p>
             </div>
             <div>
-              <p className="genresHeading">Rating Average</p>
+              <h1 className="genresHeading">Rating Average</h1>
               <p className="color">{voteAverage}</p>
             </div>
           </div>
 
           <div>
             <div>
-              <p className="genresHeading">Budget</p>
+              <h1 className="genresHeading">Budget</h1>
               <p className="color">{budget}</p>
             </div>
 
             <div>
-              <p className="genresHeading">Release Date</p>
+              <h1 className="genresHeading">Release Date</h1>
               <p className="color">
                 {`${format(new Date(releaseDate), `dd `)}th ${format(
                   new Date(releaseDate),
@@ -210,7 +224,7 @@ class MovieDetails extends Component {
             </div>
           </div>
         </div>
-        <p className="color">More Like This</p>
+        <h1 className="color">More Like This</h1>
         <ul className="commponentWrap">
           {similarMoviesCC.map(eachItem => (
             <MovieItem moviesDetails={eachItem} key={eachItem.id} />
@@ -229,6 +243,9 @@ class MovieDetails extends Component {
         break
       case apiStatusConstants.inProgress:
         a = this.renderLoader()
+        break
+      case apiStatusConstants.failure:
+        a = this.renderFailure()
         break
       default:
         a = null

@@ -18,6 +18,8 @@ import Search from './components/Search'
 
 import MovieDetails from './components/MovieDetails'
 
+import NotFoundRoute from './components/NotFoundRoute'
+
 import MovieContext from './Context'
 
 import './App.css'
@@ -120,6 +122,7 @@ class App extends Component {
           <ProtectedRoute exact path="/account" component={Profile} />
           <ProtectedRoute exact path="/search" component={Search} />
           <ProtectedRoute exact path="/movies/:id" component={MovieDetails} />
+          <NotFoundRoute />
         </Switch>
       </MovieContext.Provider>
     )

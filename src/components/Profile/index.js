@@ -13,14 +13,10 @@ class Profile extends Component {
   }
 
   render() {
-    const username = Cookies.get('username')
-    const password = Cookies.get('password')
-    let len = password.length
-    let s = ''
-    while (len !== 0) {
-      s += '*'
-      len -= 1
-    }
+    const username = Cookies.get('username') || 'Unknown' // Default value if cookie is not set
+    const password = Cookies.get('password') || '' // Default value if cookie is not set
+
+    const maskedPassword = '*'.repeat(password.length) // Masked password with asterisks
 
     return (
       <div className="color">
@@ -30,7 +26,7 @@ class Profile extends Component {
           <hr />
           <p className="textColor">Member ship</p>
           <p>Username:{username}</p>
-          <p className="textColor">Password</p> <p>{s}</p>
+          <p className="textColor">Password</p> <p>{maskedPassword}</p>
           <hr />
           <p>Plan details</p>
           <p>Premium</p>

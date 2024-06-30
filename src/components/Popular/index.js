@@ -10,6 +10,8 @@ import Header from '../Header'
 
 import Icons from '../Icons'
 
+import RenderFailureViewPopular from '../RenderFailureViewPopular'
+
 import './index.css'
 
 const apiStatusConstants = {
@@ -87,6 +89,16 @@ class Popular extends Component {
     )
   }
 
+  onClickTryAgainPopular = () => {
+    this.getPopularMovies()
+  }
+
+  renderFailure = () => (
+    <RenderFailureViewPopular
+      onClickTryAgainPopular={this.onClickTryAgainPopular}
+    />
+  )
+
   render() {
     const {apiStatus} = this.state
     let a
@@ -97,6 +109,9 @@ class Popular extends Component {
 
       case apiStatusConstants.inProgress:
         a = this.renderLoader()
+        break
+      case apiStatusConstants.failure:
+        a = this.renderFailure()
         break
       default:
         a = null
