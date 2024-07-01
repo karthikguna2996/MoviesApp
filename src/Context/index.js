@@ -7,6 +7,12 @@ const MovieContext = React.createContext({
   searchDetails: [],
   isInputVisible: false,
   apiStatusSearch: '',
+  username: '',
+  password: '',
+  onClickUserName: () => {},
+  onClickPassword: () => {},
+  onClickLoginForm: () => {},
+  err: false,
 })
 
 export default MovieContext

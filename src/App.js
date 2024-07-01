@@ -1,6 +1,6 @@
 import {Component} from 'react'
 
-import {Switch} from 'react-router-dom'
+import {Switch, withRouter} from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 
@@ -38,6 +38,40 @@ class App extends Component {
     searchDetails: [],
     isInputVisible: false,
     apiStatusSearch: apiStatusConstants.initial,
+    username: '',
+    password: '',
+    err: '',
+  }
+
+  onClickUserName = value => {
+    this.setState({username: value})
+  }
+
+  onClickPassword = value => {
+    this.setState({password: value})
+  }
+
+  onClickLoginForm = async event => {
+    event.preventDefault()
+    const {history} = this.props
+    const {username, password} = this.state
+    const userDetails = {username, password}
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(userDetails),
+    }
+    const response = await fetch('https://apis.ccbp.in/login', options)
+    const data = await response.json()
+
+    if (response.ok === true) {
+      const jwtToken = data.jwt_token
+      Cookies.set('jwt_token', jwtToken, {expires: 30})
+      Cookies.set('username', username, {expires: 30})
+      Cookies.set('password', password, {expires: 30})
+      history.replace('/')
+    } else {
+      this.setState({err: true})
+    }
   }
 
   getSearchResults = async () => {
@@ -102,6 +136,9 @@ class App extends Component {
       searchDetails,
       isInputVisible,
       apiStatusSearch,
+      username,
+      password,
+      err,
     } = this.state
 
     return (
@@ -113,6 +150,12 @@ class App extends Component {
           searchDetails,
           isInputVisible,
           apiStatusSearch,
+          username,
+          password,
+          err,
+          onClickUserName: this.onClickUserName,
+          onClickPassword: this.onClickPassword,
+          onClickLoginForm: this.onClickLoginForm,
         }}
       >
         <Switch>
@@ -129,4 +172,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withRouter(App)
